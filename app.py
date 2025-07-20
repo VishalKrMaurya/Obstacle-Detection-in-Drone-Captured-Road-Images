@@ -17,7 +17,7 @@ with st.sidebar:
 # Load model (cached)
 @st.cache_resource
 def load_model():
-    model = YOLO("last_vehicless_epoch40.pt")
+    model = YOLO("models/best.pt")
     return model
 
 model = load_model()
@@ -35,7 +35,7 @@ if uploaded_file:
             result_img = results[0].plot()  # Returns annotated image (np array)
 
             st.success(" Detection Complete!")
-            st.image(result_img, caption=" Detected Vehicles", use_column_width=True)
+            st.image(result_img, caption=" Detected Obstacles", use_column_width=True)
 
             # Optional download
             result_pil = Image.fromarray(result_img)
